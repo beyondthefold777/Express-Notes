@@ -9,6 +9,12 @@ const app = express();
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(html_routes)
+app.use(api_routes)
+
+app.listen(PORT, () => 
+    console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
 
 
 
