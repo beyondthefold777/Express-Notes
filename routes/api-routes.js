@@ -33,13 +33,13 @@ router.post('/api/notes', (req, res) => {
 router.delete('/api/notes/:id', (req, res) => {
     try {
         let data = fs.readFileSync('db/db.json', 'utf8'); // Reading the content of db.json file
-        const dataJSON = JSON.parse(data); // Parsing the JSON data from db.json
-        const newNotes = dataJSON.filter((note) => note.id !== req.params.id); // Filtering out the note with the given id
+        const dataJSON = JSON.parse(data); 
+        const newNotes = dataJSON.filter((note) => note.id !== req.params.id); // deletes the note with the given id
 
-        fs.writeFileSync('db/db.json', JSON.stringify(newNotes)); // Writing the filtered notes back to db.json file
-        res.json(newNotes); // Sending the filtered notes as response
+        fs.writeFileSync('db/db.json', JSON.stringify(newNotes)); // Writing the deleted notes back to db.json file
+        res.json(newNotes); // Sending the deleted notes as a response
     } catch (err) {
-        console.error(err); // Log any errors that occur during file reading or writing
-        res.status(500).send('Server Error'); // Sending a 500 status response in case of error
+        console.error(err); 
+        res.status(500).send('Server Error'); 
     }
 });
