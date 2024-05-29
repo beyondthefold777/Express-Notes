@@ -43,3 +43,4 @@ router.delete('/api/notes/:id', (req, res) => {
         res.status(500).send('Server Error'); 
     }
 });
+module.exports = router;
