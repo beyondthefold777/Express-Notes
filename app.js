@@ -8,18 +8,19 @@ const PORT = process.env.PORT || 3001;
 // Middleware setup
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+// changed this since render searches for files in the build directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes setup
 app.use("/", htmlRoutes);
 app.use("/api", apiRoutes); // Changed route path to /api
 
-// Route to serve the 'index.html' file from the root directory
+// Route to serve the 'index.html' file from the public directory
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Route to serve the 'notes.html' file from the root directory
+// Route to serve the 'notes.html' file from the public directory
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'notes.html'));
 });
