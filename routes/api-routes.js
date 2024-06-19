@@ -1,8 +1,9 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 
-router.post('/', (req, res) => { // Updated route path to '/'
+router.post('/notes', (req, res) => { // Update route path to '/notes'
     try {
         const dbJson = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
         const newFile = {
@@ -20,7 +21,7 @@ router.post('/', (req, res) => { // Updated route path to '/'
     }
 });
 
-router.delete('/:id', (req, res) => { // Updated route path to '/'
+router.delete('/notes/:id', (req, res) => { // Update route path to '/notes/:id'
     try {
         let data = fs.readFileSync('db/db.json', 'utf8');
         const dataJSON = JSON.parse(data);
@@ -34,7 +35,7 @@ router.delete('/:id', (req, res) => { // Updated route path to '/'
     }
 });
 
-router.get('/', (req, res) => { // Updated route path to '/'
+router.get('/notes', (req, res) => { // Update route path to '/notes'
     try {
         const dbJson = JSON.parse(fs.readFileSync('db/db.json', 'utf8'));
         res.json(dbJson);
