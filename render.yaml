@@ -14,4 +14,5 @@ services:
     buildCommand: npm install
     startCommand: node app.js
     staticSite:
-      enabled: false
+      enabled: true
+      directory: public
